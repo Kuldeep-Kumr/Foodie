@@ -1,0 +1,70 @@
+<nav class="navbar bg-dark sticky-top" data-bs-theme="dark">
+    <div class="container-fluid mb-2">
+        <a class="navbar-brand text-center" href="/owner/home">
+            Foodie
+        </a>
+
+        <!-- <div class="center">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>  -->
+
+        <div class="text-end">
+            <a class="navbar-brand" data-bs-theme="dark" href="owner/order">🛎</a>
+            <a class="navbar-brand" data-bs-theme="dark" href="owner/menu">📋</a>
+            <a class="navbar-brand btn" data-bs-theme="dark" (click)="logout()">↪</a>
+
+        </div>
+    </div>
+</nav>
+
+<section class="container">
+    <h2>Restaurant Order</h2>
+    <div *ngIf="is_data">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Dish Image</th>
+                    <th>Dish Name</th>
+                    <th>User Email</th>
+                    <th>User</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of data; let i=index">
+                    <td>{{i+1}}</td>
+                    <td><img src={{item.dish_img}} style="max-width:80px; max-height:80px" /></td>
+                    <td>{{item.dish_name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td> ₹ {{item.price}}</td>
+                    <td>
+                        <select class="form-select" aria-label="Default select example" [(ngModel)]="item.status"
+                            (change)="update(item)">
+                            <option value="placed">Placed</option>
+                            <option value="preparing">Preparing</option>
+                            <option value="ready">Ready</option>
+                            <option value="delivered">Delievred</option>
+                        </select>
+                    </td>
+                    <td> {{item.date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="!is_data">
+        <section class="content-center">
+            <div class="center " aria-hidden="false">
+                <h5 class="text-center text-primary pt-5">!! No Order Yet !!</h5>
+            </div>
+        </section>
+    </div>
+</section>

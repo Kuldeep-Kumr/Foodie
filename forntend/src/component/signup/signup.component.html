@@ -1,0 +1,73 @@
+<nav class="navbar bg-dark sticky-top" data-bs-theme="dark">
+  <div class="container-fluid mb-2">
+    <a class="navbar-brand text-center" href="/">
+      Foodie
+    </a>
+  </div>
+</nav>
+
+<section class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header text-center text-white bg-dark"><h5>Signup</h5></div>
+        <div class="card-body">
+          <form (ngSubmit)="signUp(signupForm)" #signupForm="ngForm">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="userData.name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="userData.email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone:</label>
+              <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="userData.phone">
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" id="password" name="password" required
+                [(ngModel)]="userData.password">
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password:</label>
+              <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required
+                [(ngModel)]="userData.confirmPassword">
+            </div>
+            <div class="form-group form-check m-1">
+              <input type="checkbox" class="form-check-input" id="isOwner" name="isOwner"
+                [(ngModel)]="userData.is_owner">
+              <label class="form-check-label" for="isOwner">Are you an owner?</label>
+              <div *ngIf="userData.is_owner">
+                <div class="form-group">
+                  <label for="imageUrl">Image URL:</label>
+                  <input type="text" class="form-control" id="imageUrl" name="imageUrl"
+                    [(ngModel)]="userData.img_url">
+                </div>
+                <div class="form-group">
+                  <label for="restaurantName">Restaurant Name:</label>
+                  <input type="text" class="form-control" id="restaurantName" name="restaurantName"
+                    [(ngModel)]="userData.restaurant_name">
+                </div>
+                <div class="form-group">
+                  <label for="location">Location:</label>
+                  <input type="text" class="form-control" id="location" name="location" [(ngModel)]="userData.location">
+                </div>
+                <div class="form-group">
+                  <label for="cuisine">Cuisine:</label>
+                  <input type="text" class="form-control" id="cuisine" name="cuisine" [(ngModel)]="userData.cuisine">
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center m-2">
+              <button type="submit" class="btn btn-outline-success">Submit</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

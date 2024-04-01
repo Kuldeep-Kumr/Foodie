@@ -1,0 +1,56 @@
+<nav class="navbar bg-dark sticky-top" data-bs-theme="dark">
+    <div class="container-fluid mb-2">
+      <a class="navbar-brand text-center" href="/owner/home">
+        Foodie
+      </a>
+  
+      <!-- <div class="center">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>  -->
+
+       <div class="text-end">
+        <a class="navbar-brand" data-bs-theme="dark" href="owner/order">🛎</a>
+        <a class="navbar-brand" data-bs-theme="dark" href="owner/add">📋</a>
+        <a class="navbar-brand btn" data-bs-theme="dark" (click)="logout()">↪</a>
+        
+      </div>
+    </div>
+  </nav>
+
+<section class="container">
+    <h2>User Reviews</h2>
+    <div *ngIf="is_data">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Email</th>
+                    <th>User</th>
+                    <th>Rating</th>
+                    <th>Text</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of data; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.name}}</td>
+                    <td> {{item.rating}}</td>
+                    <td> {{item.text}}</td>
+                    <td> {{item.date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="!is_data">
+        <section class="content-center">
+            <div class="center " aria-hidden="false">
+                <h5 class="text-center text-primary pt-5">!! No reviews on this dish !!</h5>
+            </div>
+        </section>
+    </div>
+</section>

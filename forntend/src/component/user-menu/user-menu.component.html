@@ -1,0 +1,76 @@
+<nav class="navbar bg-dark sticky-top" data-bs-theme="dark">
+    <div class="container-fluid mb-2">
+        <a class="navbar-brand text-center" href="/user/home">
+            Foodie
+        </a>
+
+        <!-- <div class="center">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>  -->
+
+        <div class="text-end">
+            <a class="navbar-brand" data-bs-theme="dark" href="user/order">🛵</a>
+            <a class="navbar-brand" data-bs-theme="dark" href="user/review">✍</a>
+            <a class="navbar-brand btn" data-bs-theme="dark" (click)="logout()">↪</a>
+
+        </div>
+    </div>
+</nav>
+
+<section>
+    <div *ngIf="is_data">
+        <section class="d-flex flex-wrap">
+            <div *ngFor="let item of data">
+                <div class="card m-5 p-1">
+                    <img src={{item.img_url}} class="card-img-top img" alt="food">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{item.name}} </h5>
+                        <div *ngIf="item.avg_rating">⭐{{item.avg_rating}}/5.0</div>
+                        <div *ngIf="!item.avg_rating">⭐--/5.0</div>
+                        <div class="card-body">
+                            <h6>Dish Details:- </h6>
+                            <div class="col">
+                                <h6> {{item.description}}</h6>
+                                <h5> ₹
+                                    {{item.price}}
+                                </h5>
+                                <h6>Quantity</h6>
+                                <input class="form-control input-box" type="number" [(ngModel)]="item.quantity" min="1"
+                                    placeholder="1" title="Quantity">
+
+                            </div>
+                        </div>
+
+                        <div class="card-footer d-flex space">
+                            <div class="m-1">
+                                <a (click)="placeOrder(item)"  type="button"
+                                    class="btn btn-outline-success">Order</a>
+                            </div>
+                            <div class="m-1">
+                                <a href="/user/review/{{item.id}}" type="button"
+                                    class="btn btn-outline-primary">Review</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div *ngIf="!is_data">
+        <section class="d-flex flex-wrap">
+            <div class="card m-5 w-25" aria-hidden="false">
+                <span class="placeholder w-100"></span>
+                <div class="card-body">
+                    <h5 class="card-title placeholder-glow">
+                        <span class="placeholder col-6"></span>
+                    </h5>
+                    <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

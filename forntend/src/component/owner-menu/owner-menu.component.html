@@ -1,0 +1,59 @@
+<nav class="navbar bg-dark sticky-top" data-bs-theme="dark">
+  <div class="container-fluid mb-2">
+    <a class="navbar-brand text-center" href="/owner/home">
+      Foodie
+    </a>
+
+    <!-- <div class="center">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>  -->
+
+    <div class="text-end">
+      <a class="navbar-brand" data-bs-theme="dark" href="owner/order">🛎</a>
+      <a class="navbar-brand" data-bs-theme="dark" href="owner/menu">📋</a>
+      <a class="navbar-brand btn" data-bs-theme="dark" (click)="logout()">↪</a>
+
+    </div>
+  </div>
+</nav>
+
+<section class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header"> Add New Dish</div>
+        <div class="card-body">
+          <form (ngSubmit)="addDish(dishForm)" #dishForm="ngForm" >
+
+            <div class="form-group">
+              <label for="dishName">Name:</label>
+              <input type="text" class="form-control" id="dishName" name="dishName" required [(ngModel)]="dish.name">
+            </div>
+            <div class="form-group">
+              <label for="dishPrice">Price:</label>
+              <input type="number" class="form-control" id="dishPrice" name="dishPrice" required
+                [(ngModel)]="dish.price">
+            </div>
+            <div class="form-group">
+              <label for="dishImage">Image URL:</label>
+              <input type="text" class="form-control" id="dishImage" name="dishImage" required
+                [(ngModel)]="dish.img_url">
+            </div>
+            <div class="form-group">
+              <label for="dishDescription">Description:</label>
+              <textarea type="text" class="form-control" id="dishDescription" name="dishDescription" required
+                [(ngModel)]="dish.description" rows="3"></textarea>
+            </div>
+            <div class="text-center m-3">
+              <button type="submit" class="btn btn-outline-success">Submit</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

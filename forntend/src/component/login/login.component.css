@@ -1,0 +1,14 @@
+.bg{
+    background-image: url(../../assets/bg-image.webp);
+    height: 87vh;
+    padding-top: 4px;
+    margin: 0px;
+    padding-right: 0px;
+}
+.row{
+    margin:0px ;
+}
+
+.space{
+    justify-content: space-between;
+}
